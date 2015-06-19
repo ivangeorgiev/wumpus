@@ -13,6 +13,7 @@ for i in cave_numbers:
 visited_caves = [0]
 unvisited_caves.remove(0)
 
+# Generate traversable cave system
 while unvisited_caves != []:
     i = choice(visited_caves)
     if len(caves[i]) > 3:
@@ -31,6 +32,7 @@ while unvisited_caves != []:
         print(number, ":", caves[number])
     print('-----------------')
 
+# Extend passages so each cave has at least 3 exits
 for i in cave_numbers:
     while len(caves[i]) < 3:
         passage_to = i
@@ -43,19 +45,22 @@ print('---------------------')
 for number in cave_numbers:
     print(number, ":", caves[number])
 print('-----------------')
-    
+
+# Initialize player and wumpus locations
 wumpus_location = choice(cave_numbers)
 player_location = choice(cave_numbers)
 
 while player_location == wumpus_location :
     player_location = choice(cave_numbers)
     
+# Welcome the player
 print("Welcome to Hunt the Wumpus!")
 print("There are", NUM_CAVES, " caves")
 print("To play, just type the number")
 print("of the cave you wish to enter next");
 print()
 
+# The game loop
 while True:
     print("You are in cave", player_location)
     print("From here you can enter caves ", caves[player_location])
